@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 
 from langchain.prompts import MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
@@ -56,8 +57,15 @@ agent_chain = initialize_agent(
         "input_variables": ["input", "agent_scratchpad", "chat_history"]
     }
 )
-prompt = """
-Please add a .gitignore file to the current directory with appropriate contents.
-"""
+# Create a parser
+parser = argparse.ArgumentParser(description='Process a prompt.')
+# Add a positional argument for the prompt with a default value of None
+parser.add_argument('prompt', type=str, nargs='?', default=None, help='The prompt for the agent')
+# Parse the arguments
+args = parser.parse_args()
 
-agent_chain.run(prefix + prompt + terminal_bugfix)
+# If a prompt is not provided, ask for human input.
+if not args.prompt:
+    args.prompt = input("Please provide a prompt: ")
+
+agent_chain.run(prefix + args.prompt + terminal_bugfix)
