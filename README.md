@@ -3,7 +3,7 @@
 
 This project aims to develop a usable coding agent, which will work iteratively in collaboration with a developer.
 
-At the current time, BabyAgi/AutoGPT approaches are too unstable to be of very much assistance. However, there is every reason to develop an agent that learns from its environment, from its mistakes (Reflexion), and from your chat history, and develops tools as needed (Voyager).
+At the current time, BabyAgi/AutoGPT approaches are too unstable to be of very much assistance. However, there is every reason to develop an agent that learns from its environment, from its mistakes, and from your chat history, and develops tools as needed (Voyager).
 
 # Usage
 
@@ -33,6 +33,7 @@ PRs are very welcome! See the development roadmap below for ideas. You can open 
 - [x] Get agent to ask for task. Maybe use prefix
 - [x] Install as command-line tool
 - [x] Install to PyPi (using the agent itself!)
+- [x] Add CI/CD to publish to PyPi automatically
 - [ ] On initialization, ask which files to embed
 - [ ] Add project structure and current location to every request
 - Agent does not always get input
