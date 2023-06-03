@@ -11,11 +11,17 @@ Your agent will therefore adapt to your work habits, building tools and course-c
 
 # Usage
 
-You should also put your OpenAI key in your .bashrc or .zshrc file, like this:
+To install this repository as a global Python CLI tool, run `pip install -e .`
+
+You should also put your OpenAI and Google Search API keys in your .bashrc or .zshrc file, like this:
 
 ```
 export OPENAI_API_KEY=yourkeyhere
+export GOOGLE_API_KEY=yourkeyhere
+export GOOGLE_CSE_ID=yourkeyhere
 ```
+
+After that you can simply type `voyager_dev` anywhere on the command line.
 
 # Development Roadmap
 
@@ -25,6 +31,7 @@ export OPENAI_API_KEY=yourkeyhere
 - Add persistent chat history per directory.
 - Only send up to maximum tokens. Use embeddings (or split with most recent)
 - Add logging capabilities so we can see running terminal commands in a separate terminal with tail -f /path/to/logfile
+-- Also useful for sub-agents
 - Install as command-line tool
 
 - eventually, [Voyager](https://github.com/MineDojo/Voyager/tree/main/voyager) approach, build up skills list

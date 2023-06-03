@@ -1,0 +1,9 @@
+README.md
+setup.py
+voyager_dev/__init__.py
+voyager_dev/voyager_dev.py
+voyager_dev.egg-info/PKG-INFO
+voyager_dev.egg-info/SOURCES.txt
+voyager_dev.egg-info/dependency_links.txt
+voyager_dev.egg-info/entry_points.txt
+voyager_dev.egg-info/top_level.txt

@@ -1,2 +1,2 @@
 from setuptools import setup
-setup(name="agent", version="0.1", packages=["agent"], entry_points={"console_scripts": ["agent=agent.agent:main"]})
+setup(name="voyager_dev", version="0.1", packages=["voyager_dev"], entry_points={"console_scripts": ["voyager_dev=voyager_dev.voyager_dev:main"]})
