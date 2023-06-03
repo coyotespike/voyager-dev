@@ -3,11 +3,11 @@
 
 This project aims to develop a usable coding agent, which will work iteratively in collaboration with a developer.
 
-At the current time, BabyAgi/AutoGPT approaches are too unstable to be of very much assistance. However, there is every reason to develop an agent that learns from its environment, from its mistakes, and from your chat history, and develops tools as needed.
+At the current time, BabyAgi/AutoGPT approaches are too unstable to be of very much assistance. However, there is every reason to develop an agent that learns from its environment, from its mistakes (Reflexion), and from your chat history, and develops tools as needed (Voyager).
 
 # Usage
 
-You can install this from PyPi with `pip install voyager_dev`.
+You can install this from [PyPi](https://pypi.org/project/voyager-dev/) with `pip install voyager_dev`.
 
 Alternatively, you can clone this repository. Then to install this repository as a global Python CLI tool, run `pip install -e .`
 

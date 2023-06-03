@@ -68,4 +68,8 @@ args = parser.parse_args()
 if not args.prompt:
     args.prompt = input("Please provide a prompt: ")
 
-agent_chain.run(prefix + args.prompt + terminal_bugfix)
+def main():
+    agent_chain.run(prefix + args.prompt + terminal_bugfix)
+
+if __name__ == "__main__":
+    main()
