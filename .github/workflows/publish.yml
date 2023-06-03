@@ -3,7 +3,9 @@ name: Publish to PyPI
 on:
   push:
     branches:
-      - main
+      - master
+    paths:
+      - 'setup.py'
 
 jobs:
   build:

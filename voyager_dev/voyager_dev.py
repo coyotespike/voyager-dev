@@ -65,10 +65,9 @@ parser.add_argument('prompt', type=str, nargs='?', default=None, help='The promp
 args = parser.parse_args()
 
 # If a prompt is not provided, ask for human input.
-if not args.prompt:
-    args.prompt = input("Please provide a prompt: ")
-
 def main():
+    if not args.prompt:
+        args.prompt = input("Please provide a prompt: ")
     agent_chain.run(prefix + args.prompt + terminal_bugfix)
 
 if __name__ == "__main__":
