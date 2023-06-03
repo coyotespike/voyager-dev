@@ -50,7 +50,7 @@ agent_chain = initialize_agent(
     agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True,
     prefix=prefix,
-    suffix=terminal_bugfix,
+    suffix=terminal_bugfix, # this does not appear to help
     memory=memory,
     agent_kwargs = {
         "memory_prompts": [chat_history],
