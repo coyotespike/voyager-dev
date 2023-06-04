@@ -1,18 +1,23 @@
 #!/usr/bin/env python3
+# Used to run the agent from the command line
 import argparse
+import os
 
-from langchain.prompts import MessagesPlaceholder
+# Memory
 from langchain.memory import ConversationBufferMemory
+from langchain.memory.chat_message_histories import RedisChatMessageHistory
 
+# Models
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
-from langchain.agents import load_tools, initialize_agent, AgentType, Tool
 
+# Agents and Tools
+from langchain.agents import load_tools, initialize_agent, AgentType, Tool
 from langchain.agents.agent_toolkits import FileManagementToolkit
 
 
-chat_history = MessagesPlaceholder(variable_name="chat_history")
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+message_history = RedisChatMessageHistory(url='redis://localhost:6379/0', ttl=600, session_id='my-session')
+memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=message_history)
 
 llm = ChatOpenAI(temperature=0.0)
 math_llm = OpenAI(temperature=0.0)
@@ -49,14 +54,23 @@ agent_chain = initialize_agent(
     llm,
     agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True,
-    prefix=prefix,
-    suffix=terminal_bugfix, # this does not appear to help
     memory=memory,
     agent_kwargs = {
-        "memory_prompts": [chat_history],
-        "input_variables": ["input", "agent_scratchpad", "chat_history"]
+        "prefix": prefix,
+        "suffix": suffix,
+        "input_variables": ["input", "agent_scratchpad", "chat_history", "directory_structure"],
     }
 )
+# agent_chain = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, verbose=True, memory=memory)
+# Create a parser
+parser = argparse.ArgumentParser(description='Process a prompt.')
+# Add a positional argument for the prompt with a default value of None
+parser.add_argument('prompt', type=str, nargs='?', default=None, help='The prompt for the agent')
+# Parse the arguments
+args = parser.parse_args()
+
+
+
 # Create a parser
 parser = argparse.ArgumentParser(description='Process a prompt.')
 # Add a positional argument for the prompt with a default value of None
