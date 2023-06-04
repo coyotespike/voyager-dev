@@ -3,7 +3,7 @@
 
 This project aims to develop a usable coding agent, which will work iteratively in collaboration with a developer.
 
-At the current time, BabyAgi/AutoGPT approaches are too unstable to be of very much assistance. However, there is every reason to develop an agent that learns from its environment, from its mistakes, and from your chat history, and develops tools as needed (Voyager).
+At the current time, BabyAgi/AutoGPT approaches are too unstable to be of very much assistance. However, there is every reason to develop an agent that learns from its environment, from its mistakes, and from your chat history. In the future we hope to allow it to develop LangChain tools as needed (Voyager).
 
 ## Usage
 
@@ -37,16 +37,16 @@ PRs are very welcome! See the development roadmap below for ideas. You can open 
 - [ ] On initialization, ask which files to embed
 - [ ] Add project structure and current location to every request
 - [ ] Add persistent chat history per directory.
+- [ ] Add a separate memory store for [Reflexion](https://github.com/noahshinn024/reflexion)
 - [ ] Only send up to maximum tokens. Use embeddings (or split with most recent). It crashes if terminal output is too long.
 - [ ] Add logging capabilities so we can see running terminal commands in a separate terminal with tail -f /path/to/logfile
 -- Also useful for sub-agents
 - [ ] Allow it to interrupt execution for subprocesses that ask for user input it does not have.
-- [ ] [Voyager](https://github.com/MineDojo/Voyager/tree/main/voyager) approach, build up skills list
-- [ ] Add a separate memory store for [Reflexion](https://github.com/noahshinn024/reflexion)
-- [ ] Maybe switch to Chroma for embeddings
 - [ ] Maybe use qlora to implement Toolformer. Can reflexion/Voyager provide training data?
 - [ ] Enable local LLM, a la GPT4All
 - Agent does not always get input?
+- [ ] [Voyager](https://github.com/MineDojo/Voyager/tree/main/voyager) approach, build up skills list
+-- Actually that will need to be a separate project
 
 ## Safety
 
@@ -55,4 +55,5 @@ Currently the shell/terminal command is the most unsafe tool given to this agent
 Enhance with:
 - Local LLM
 - Programmatic (not LLM) confirmation, or sandboxed LLM confirmation
+- Provide subset of terminal tools to limit LLM capabilities to actions you are comfortable with
 - Crypto signing tool for certain tasks

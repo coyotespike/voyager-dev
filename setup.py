@@ -11,7 +11,7 @@ setup(
     description='A package for coding assistance',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/coyotespike/voyager_dev',
+    url='https://github.com/coyotespike/voyager-dev',
     packages=['voyager_dev'],
     entry_points={'console_scripts': ['voyager_dev=voyager_dev.voyager_dev:main']},
     classifiers=[
