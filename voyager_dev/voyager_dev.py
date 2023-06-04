@@ -15,6 +15,11 @@ from langchain.llms import OpenAI
 from langchain.agents import load_tools, initialize_agent, AgentType, Tool
 from langchain.agents.agent_toolkits import FileManagementToolkit
 
+# Create and read in the file directory_structure
+from create_directory_diagram import create_tree_diagram
+create_tree_diagram()
+with open("directory_structure", "r") as f:
+    directory_structure = f.read()
 
 message_history = RedisChatMessageHistory(url='redis://localhost:6379/0', ttl=600, session_id='my-session')
 memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=message_history)
@@ -47,6 +52,10 @@ You should only modify files or directories in the current directory. Check what
 If asked to update a file, make sure you have the correct file, then carefully consider the entirety of the file, and any related files, before making changes.
 
 You may use the human input tool to get confirmation.
+
+Directory structure:
+{directory_structure}
+
 """
 
 agent_chain = initialize_agent(
