@@ -36,7 +36,9 @@ file_toolkit = FileManagementToolkit().get_tools()
 
 tools = tools + file_toolkit
 
-terminal_bugfix = 'The input for the terminal tool is either a string or "action_input": {"commands": []} with commands inside the array. Check with me before you run any terminal commands.'
+suffix = """
+The input for the terminal tool is either a "action_input": followed by a string, or "action_input": followed by a dictionary with key "commands" and value as array of strings. Check with me before you run any terminal commands.
+"""
 
 prefix = """
 Here are some general instructions for every task:
@@ -53,9 +55,13 @@ If asked to update a file, make sure you have the correct file, then carefully c
 
 You may use the human input tool to get confirmation.
 
+Chat history:
+{chat_history}
+
 Directory structure:
 {directory_structure}
 
+Remember to use tools for all tasks.
 """
 
 agent_chain = initialize_agent(
@@ -100,6 +106,10 @@ def main():
         if os.path.isfile(args.prompt):
             with open(args.prompt, 'r') as file:
                 args.prompt = file.read()
+    agent_chain.run({
+        "input": prefix + args.prompt + suffix,
+        "directory_structure": directory_structure,
+         })
 
 if __name__ == "__main__":
     main()
