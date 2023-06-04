@@ -24,7 +24,7 @@ with open("directory_structure", "r") as f:
 message_history = RedisChatMessageHistory(url='redis://localhost:6379/0', ttl=600, session_id='my-session')
 memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=message_history)
 
-llm = ChatOpenAI(temperature=0.0)
+llm = ChatOpenAI(temperature=0.0, model_name="gpt-4")
 math_llm = OpenAI(temperature=0.0)
 tools = load_tools(
     ["human", "llm-math", "terminal", "python_repl", "google-search"],
