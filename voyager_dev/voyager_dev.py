@@ -87,11 +87,19 @@ parser.add_argument('prompt', type=str, nargs='?', default=None, help='The promp
 # Parse the arguments
 args = parser.parse_args()
 
+# If the prompt is a file path, read the file and use its content as the prompt
+if args.prompt and os.path.isfile(args.prompt):
+    with open(args.prompt, 'r') as file:
+        args.prompt = file.read()
+
 # If a prompt is not provided, ask for human input.
 def main():
     if not args.prompt:
         args.prompt = input("Please provide a prompt: ")
-    agent_chain.run(prefix + args.prompt + terminal_bugfix)
+        # If the input is a file path, read the file and use its content as the prompt
+        if os.path.isfile(args.prompt):
+            with open(args.prompt, 'r') as file:
+                args.prompt = file.read()
 
 if __name__ == "__main__":
     main()
