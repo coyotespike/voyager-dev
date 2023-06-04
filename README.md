@@ -7,6 +7,12 @@ At the current time, BabyAgi/AutoGPT approaches are too unstable to be of very m
 
 ## Usage
 
+After installation, you can run `voyager_dev` from anywhere on the command line. You may optionally provide a prompt, `voyager_dev what is the weather today?`, or you can just hit enter and it will ask you for a prompt.
+
+For more complex prompts, place them in a file and provide the filename as the prompt. For example, `voyager_dev myprompt.txt`. This enables multiline prompts more easily.
+
+## Installation
+
 You can install this from [PyPi](https://pypi.org/project/voyager-dev/) with `pip install voyager_dev`.
 
 Alternatively, you can clone this repository. Then to install this repository as a global Python CLI tool, run `pip install -e .`
@@ -21,6 +27,8 @@ export GOOGLE_CSE_ID=yourkeyhere
 
 You can get the latter two by creating the GOOGLE_API_KEY in the [Google Cloud credential console](https://console.cloud.google.com/apis/credentials) and a GOOGLE_CSE_ID using the [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/create). Examine the output carefully the first time you run it, Google may return a detailed error telling you how to fix it.
 
+Finally, install and run redis (for the memory store) with `brew install redis` and `brew services start redis`. (You can also use `redis-server` if you don't want it to run in the background.)
+
 After that, you can simply type `voyager_dev` anywhere on the command line.
 
 ## Contributions and Issues
@@ -34,11 +42,11 @@ PRs are very welcome! See the development roadmap below for ideas. You can open 
 - [x] Install as command-line tool
 - [x] Install to PyPi (using the agent itself!)
 - [x] Add CI/CD to publish to PyPi automatically when setup.py is changed
+- [x] Add persistent chat history
+- [x] Add project structure to every request
 - [ ] On initialization, ask which files to embed
-- [ ] Add project structure and current location to every request
-- [ ] Add persistent chat history per directory.
 - [ ] Add a separate memory store for [Reflexion](https://github.com/noahshinn024/reflexion)
-- [ ] Only send up to maximum tokens. Use embeddings (or split with most recent). It crashes if terminal output is too long.
+- [ ] Only send up to maximum tokens. Use embeddings (or split with most recent). It crashes if terminal output is too long. [See callback](https://python.langchain.com/en/latest/modules/callbacks/getting_started.html)
 - [ ] Add logging capabilities so we can see running terminal commands in a separate terminal with tail -f /path/to/logfile
 -- Also useful for sub-agents
 - [ ] Allow it to interrupt execution for subprocesses that ask for user input it does not have.

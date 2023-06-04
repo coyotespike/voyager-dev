@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
 diagram_prompt = """
-Produce a diagram of the current directory structure and save it to a file.
+Create a Python script in the current directory that will create a simple tree diagram of all files in the current directory (except for .git, dist, build, node_modules, any .egg-info directory, and any __pycache__ directory).
 
-Exclude node_modules, .git, and __pycache__ directories. Use the following example as a rough guide:
+This python script should be named create_directory_diagram.py and should save the diagram into a file named directory_structure, if that file doesn't exist.
+
+Use the following example as a rough guide for the output this script should produce:
 
 your-package-name/
 ├── your_package_name

@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setup(
     name='voyager_dev',
-    version='0.0.1',
+    version='0.0.2',
     author='Timothy Roy',
     author_email='tim@gradientflow.ai',
     description='A package for coding assistance',
